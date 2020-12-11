@@ -49,6 +49,15 @@ button:hover{
 #outputArea::-webkit-scrollbar-thumb{
     background: rgb(150, 43, 53);
 }
+body::-webkit-scrollbar{
+    width: .5em;
+}
+body::-webkit-scrollbar-track{
+    background: rgb(150, 43, 53);
+}
+body::-webkit-scrollbar-thumb{
+    background-color: #413b3b;
+}
 #errorModal{
     display: none;
     position: absolute;
@@ -70,10 +79,13 @@ button:hover{
 #notes{
     position: absolute;
     display: flex;
-    width: 10vw;
-    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100vw;
+    height: 20vh;
     left: 1vw;
-    top: 0;
+    bottom: -20vh;
     flex-wrap: wrap;
     opacity: .05;
 }
@@ -81,5 +93,14 @@ button:hover{
     margin: .5rem;
 }
 #artistHeader{
-    color: #c2b83a;
+    color: #eac403;
+}
+
+@media screen and (min-width: 1201px) {
+    #notes{
+        width: 10vw;
+        height: 100vh;
+        left: 1vw;
+        top: 0;
+    }
 }

@@ -139,21 +139,22 @@
        let newSongTitle = document.getElementById("addSong").value;
        let newSongArtist = document.getElementById("addArtist").value;
 
-       if(newSongArtist.length < 1 || newSongArtist.length < 1){
+       if(newSongArtist.length < 1 || newSongTitle.length < 1){
            displayModal();
            setTimeout(removeModal, 1000);
-       }
+       } else {
 
-       let newMusic = {
-           artist: newSongArtist,
-           songTitle: newSongTitle
+           let newMusic = {
+               artist: newSongArtist,
+               songTitle: newSongTitle
+           }
+           music.push(newMusic);
+           outputSpot.innerHTML = render(music);
        }
-        music.push(newMusic);
-        outputSpot.innerHTML = render(music);
-        setTimeout(function (){
-            addMusicButton.disabled = false;
-            addMusicButton.style.backgroundColor = "black";
-        }, 1250);
+       setTimeout(function () {
+           addMusicButton.disabled = false;
+           addMusicButton.style.backgroundColor = "black";
+       }, 1250);
     });
 
     const artistSearch = document.getElementById("artistSearch");
