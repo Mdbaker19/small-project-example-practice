@@ -1,5 +1,5 @@
 (function (){
-    const music = [
+    let music = [
         {
             artist: "Pink Floyd",
             songTitle: "Comfortably Numb",
@@ -34,27 +34,27 @@
         },
         {
             artist: "Avenged SevenFold",
-            songTitle: "",
+            songTitle: "Chapter Four",
         },
         {
             artist: "Avenged SevenFold",
-            songTitle: "",
+            songTitle: "Buried Alive",
         },
         {
             artist: "Avenged SevenFold",
-            songTitle: "",
+            songTitle: "Hail to the King",
         },
         {
             artist: "Avenged SevenFold",
-            songTitle: "",
+            songTitle: "Coming Home",
         },
         {
             artist: "Avenged SevenFold",
-            songTitle: "",
+            songTitle: "Paradigm",
         },
         {
             artist: "Avenged SevenFold",
-            songTitle: "",
+            songTitle: "Second HeartBeat",
         },
         {
             artist: "ACDC",
@@ -79,7 +79,36 @@
         {
             artist: "ACDC",
             songTitle: "Rock and Roll aint Noise Pollution",
-        }
+        },
+        {
+            artist: "Twenty One Pilots",
+            songTitle: "Ode To Sleep",
+        },
+        {
+            artist: "Twenty One Pilots",
+            songTitle: "Migrane",
+        },
+        {
+            artist: "Twenty One Pilots",
+            songTitle: "Holding On To You",
+        },
+        {
+            artist: "Twenty One Pilots",
+            songTitle: "Screen",
+        },
+        {
+            artist: "Rebelution",
+            songTitle: "Santa Barbra",
+        },
+        {
+            artist: "Rebelution",
+            songTitle: "Closer I Get",
+        },
+        {
+            artist: "Rebelution",
+            songTitle: "Lay my Claim",
+        },
+
     ];
 
     function render(arr){
@@ -92,10 +121,66 @@
         return html;
     }
 
+    let errorModal = document.getElementById("errorModal");
+    function displayModal(){
+        errorModal.style.display = "flex";
+    }
+    function removeModal(){
+        errorModal.style.display = "none";
+    }
+
     let outputSpot = document.getElementById("outputArea");
-    outputSpot.innerHTML = render(music)
+    outputSpot.innerHTML = render(music);
 
+    let addMusicButton = document.getElementById("addMusic");
+    addMusicButton.addEventListener("click", function(){
+       addMusicButton.disabled = true;
+       addMusicButton.style.backgroundColor = "lightgrey";
+       let newSongTitle = document.getElementById("addSong").value;
+       let newSongArtist = document.getElementById("addArtist").value;
 
+       if(newSongArtist.length < 1 || newSongArtist.length < 1){
+           displayModal();
+           setTimeout(removeModal, 1000);
+       }
 
+       let newMusic = {
+           artist: newSongArtist,
+           songTitle: newSongTitle
+       }
+        music.push(newMusic);
+        outputSpot.innerHTML = render(music);
+        setTimeout(function (){
+            addMusicButton.disabled = false;
+            addMusicButton.style.backgroundColor = "black";
+        }, 1000);
+    });
+
+    let artistSearch = document.getElementById("artistSearch");
+    let songSearch = document.getElementById("songSearch");
+
+    let songBucket = [];
+
+    artistSearch.addEventListener("input", function (){
+        songBucket = [];
+        let currentInput = artistSearch.value;
+        music.forEach(song => {
+            if(song.artist.toLowerCase().includes(currentInput.toLowerCase())){
+                songBucket.push(song);
+            }
+        });
+        outputSpot.innerHTML = render(songBucket);
+    });
+
+    songSearch.addEventListener("input", function (){
+        songBucket = [];
+        let currentInput = songSearch.value;
+        music.forEach(song => {
+            if(song.songTitle.toLowerCase().includes(currentInput.toLowerCase())){
+                songBucket.push(song);
+            }
+        });
+        outputSpot.innerHTML = render(songBucket);
+    });
 
 })();

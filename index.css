@@ -49,3 +49,13 @@ button:hover{
 #outputArea::-webkit-scrollbar-thumb{
     background: rgb(150, 43, 53);
 }
+#errorModal{
+    display: none;
+    position: absolute;
+    background-color: black;
+    width: 50vh;
+    height: 25vh;
+    top: 25vh;
+    left: 35vw;
+
+}
