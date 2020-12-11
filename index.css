@@ -57,5 +57,13 @@ button:hover{
     height: 25vh;
     top: 25vh;
     left: 35vw;
-
+    justify-content: center;
+    align-items: center;
+    border: 5px solid rgb(150, 43, 53);
+    border-radius: 15px;
+}
+.inputField{
+    background-color: #413b3b;
+    color: aliceblue;
+    border: none;
 }
