@@ -25,7 +25,7 @@ body{
 button{
     width: 25%;
     background-color: black;
-    color: aliceblue;
+    color: darkkhaki;
     border-radius: 15px;
 }
 button:hover{
@@ -66,4 +66,20 @@ button:hover{
     background-color: #413b3b;
     color: aliceblue;
     border: none;
+}
+#notes{
+    position: absolute;
+    display: flex;
+    width: 10vw;
+    height: 100vh;
+    left: 1vw;
+    top: 0;
+    flex-wrap: wrap;
+    opacity: .05;
+}
+#musicCard{
+    margin: .5rem;
+}
+#artistHeader{
+    color: #c2b83a;
 }

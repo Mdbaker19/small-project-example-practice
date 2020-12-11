@@ -112,16 +112,16 @@
     ];
 
     function render(arr){
-        let html = "<div>";
+        let html = `<div>`;
         for(let i = 0; i < arr.length; i++){
-            html += `<h2>${arr[i].artist}</h2>
-                    <p>${arr[i].songTitle}</p>`;
+            html += `<div id="musicCard"><h2 id="artistHeader">${arr[i].artist}</h2>
+                    <p>${arr[i].songTitle}</p></div>`;
         }
         html += "</div>";
         return html;
     }
 
-    let errorModal = document.getElementById("errorModal");
+    const errorModal = document.getElementById("errorModal");
     function displayModal(){
         errorModal.style.display = "flex";
     }
@@ -132,7 +132,7 @@
     let outputSpot = document.getElementById("outputArea");
     outputSpot.innerHTML = render(music);
 
-    let addMusicButton = document.getElementById("addMusic");
+    const addMusicButton = document.getElementById("addMusic");
     addMusicButton.addEventListener("click", function(){
        addMusicButton.disabled = true;
        addMusicButton.style.backgroundColor = "lightgrey";
@@ -153,11 +153,11 @@
         setTimeout(function (){
             addMusicButton.disabled = false;
             addMusicButton.style.backgroundColor = "black";
-        }, 1000);
+        }, 1250);
     });
 
-    let artistSearch = document.getElementById("artistSearch");
-    let songSearch = document.getElementById("songSearch");
+    const artistSearch = document.getElementById("artistSearch");
+    const songSearch = document.getElementById("songSearch");
 
     let songBucket = [];
 
@@ -181,6 +181,14 @@
             }
         });
         outputSpot.innerHTML = render(songBucket);
+    });
+
+    const notes = document.getElementById("notes");
+    notes.addEventListener("mouseenter", function (){
+        notes.style.opacity = "1";
+    });
+    notes.addEventListener("mouseleave", function(){
+        notes.style.opacity = ".05";
     });
 
 })();
